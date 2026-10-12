@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no" />
+  <title>Tospik ile Kodlama</title>
+  <meta name="description" content="Kaplumbağa Tospik'i oklarla çileğe götür. 6 yaş için kodlama oyunu." />
+  <meta name="theme-color" content="#FFF3D6" />
+  <link rel="manifest" href="manifest.json" />
+  <link rel="icon" href="icons/icon-192.png" />
+  <link rel="apple-touch-icon" href="icons/icon-192.png" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="sky"></div>
+
+  <header class="top">
+    <div class="brand">
+      <span class="brand-turtle" aria-hidden="true">
+        <svg viewBox="0 0 100 100"><use href="#turtle-shape"/></svg>
+      </span>
+      <h1>Tospik ile Kodlama</h1>
+    </div>
+    <div class="top-right">
+      <nav class="unit-nav" aria-label="Üniteler">
+        <button class="unit-arrow" id="prevUnitBtn" type="button" aria-label="Önceki ünite">‹</button>
+        <div class="unit-box">
+          <div class="unit-label" id="unitLabel">Ünite 1</div>
+          <ol class="levels" id="levelBadges" aria-label="Bölümler"></ol>
+        </div>
+        <button class="unit-arrow" id="nextUnitBtn" type="button" aria-label="Sonraki ünite">›</button>
+      </nav>
+      <button class="icon-btn" id="muteBtn" type="button" aria-label="Sesi kapat/aç" title="Ses">🔊</button>
+    </div>
+  </header>
+
+  <main class="game">
+    <section class="stage">
+      <div class="bubble" id="bubble">
+        <p id="bubbleText">…</p>
+        <button class="bubble-read" id="readBtn" type="button" aria-label="Sesli oku">🗣️</button>
+      </div>
+
+      <div class="board-wrap">
+        <div class="board" id="board" aria-label="Oyun tahtası">
+          <div class="turtle" id="turtle" aria-hidden="true">
+            <div class="turtle-rot" id="turtleRot">
+              <svg viewBox="0 0 100 100"><use href="#turtle-shape"/></svg>
+            </div>
+            <span class="turtle-key">🔑</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="panel">
+      <div class="panel-title" id="panelTitle">Okları sıraya diz</div>
+
+      <div class="palette" id="palette" role="group" aria-label="Komutlar">
+        <button class="cmd" data-dir="up"    type="button" aria-label="Yukarı">↑</button>
+        <button class="cmd" data-dir="down"  type="button" aria-label="Aşağı">↓</button>
+        <button class="cmd" data-dir="left"  type="button" aria-label="Sola">←</button>
+        <button class="cmd" data-dir="right" type="button" aria-label="Sağa">→</button>
+      </div>
+
+      <div class="repeat-row" id="repeatRow" hidden>
+        <button class="repeat-btn" id="repeatBtn" type="button" aria-label="Tekrar bloğu">🔁 Tekrar</button>
+        <div class="nums" role="group" aria-label="Kaç kez">
+          <button class="num" data-n="2" type="button">2</button>
+          <button class="num" data-n="3" type="button">3</button>
+          <button class="num" data-n="4" type="button">4</button>
+          <button class="num" data-n="5" type="button">5</button>
+        </div>
+      </div>
+
+      <div class="editor-tools" id="editorTools" hidden role="group" aria-label="Araçlar">
+        <button class="tool active" data-tool="tree"   type="button" aria-label="Ağaç koy"><span>🌳</span>Ağaç</button>
+        <button class="tool" data-tool="goal"   type="button" aria-label="Çileği taşı"><span>🍓</span>Çilek</button>
+        <button class="tool" data-tool="start"  type="button" aria-label="Tospik'i taşı"><span>🐢</span>Tospik</button>
+        <button class="tool" data-tool="eraser" type="button" aria-label="Sil"><span>🧽</span>Sil</button>
+      </div>
+
+      <div class="program" id="program" aria-label="Program"></div>
+
+      <div class="controls" id="controls">
+        <button class="ctl ctl-undo"  id="undoBtn"  type="button" aria-label="Son oku sil">↩</button>
+        <button class="ctl ctl-run"   id="runBtn"   type="button">▶ Başlat</button>
+        <button class="ctl ctl-clear" id="clearBtn" type="button" aria-label="Hepsini sil">🗑</button>
+        <button class="ctl ctl-edit"  id="editBtn"  type="button" aria-label="Bahçeyi düzenle" hidden>✏️</button>
+        <button class="ctl ctl-run"   id="playBtn"  type="button" hidden>▶ Oyna</button>
+      </div>
+    </section>
+  </main>
+
+  <div class="overlay" id="overlay" hidden>
+    <div class="card">
+      <div class="card-stars" id="cardStars">⭐⭐⭐</div>
+      <h2 id="cardTitle">Aferin!</h2>
+      <p id="cardText"></p>
+      <div class="card-actions">
+        <button class="ctl ctl-ghost" id="replayBtn" type="button">↻ Tekrar</button>
+        <button class="ctl ctl-run" id="nextBtn" type="button">Sonraki bölüm →</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="confetti" id="confetti" aria-hidden="true"></div>
+
+  <svg width="0" height="0" style="position:absolute">
+    <defs>
+      <!-- Tospik: sağa bakan, kuşbakışı kaplumbağa -->
+      <g id="turtle-shape">
+        <g fill="#4E9A3C" stroke="#2E5A24" stroke-width="3" stroke-linejoin="round">
+          <ellipse cx="28" cy="26" rx="10" ry="7" transform="rotate(-35 28 26)"/>
+          <ellipse cx="28" cy="74" rx="10" ry="7" transform="rotate(35 28 74)"/>
+          <ellipse cx="66" cy="26" rx="10" ry="7" transform="rotate(35 66 26)"/>
+          <ellipse cx="66" cy="74" rx="10" ry="7" transform="rotate(-35 66 74)"/>
+          <path d="M14 50 L6 46 L6 54 Z"/>
+          <circle cx="83" cy="50" r="12"/>
+        </g>
+        <circle cx="87" cy="46" r="2.4" fill="#1F2A1A"/>
+        <circle cx="87" cy="54" r="2.4" fill="#1F2A1A"/>
+        <path d="M92 50 q2 2 0 4" stroke="#1F2A1A" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+        <ellipse cx="47" cy="50" rx="33" ry="29" fill="#7CC94E" stroke="#2E5A24" stroke-width="3.5"/>
+        <g fill="#A8E06E" stroke="#2E5A24" stroke-width="2" stroke-linejoin="round">
+          <polygon points="47,36 58,42 58,56 47,62 36,56 36,42"/>
+          <polygon points="26,44 34,40 36,48 30,56 24,52"/>
+          <polygon points="68,44 60,40 58,48 64,56 70,52"/>
+          <polygon points="40,26 48,30 44,36 36,36"/>
+          <polygon points="54,26 46,30 50,36 58,36"/>
+          <polygon points="40,74 48,70 44,64 36,64"/>
+          <polygon points="54,74 46,70 50,64 58,64"/>
+        </g>
+      </g>
+    </defs>
+  </svg>
+
+  <script src="levels.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
