@@ -13,7 +13,7 @@
 - [x] Üst bar: ünite adı + o ünitenin rozetleri (tıklayınca bölüme gider) + ‹ › ünite okları
 - [x] Sesler (WebAudio) + sesli okuma (tr-TR) + ses kapatma; konfeti; ilerleme localStorage
 - [x] PWA: manifest + service worker (v2) + ikonlar; tablet (16:10) yatay/dikey kaydırmasız düzen
-- [ ] Yayın: https adres (GitHub Pages) → tablete "ana ekrana ekle" kablosuz
+- [x] Yayın: GitHub Pages → https://sezgicelik.github.io/tospik-kodlama/ (repo: github.com/sezgicelik/tospik-kodlama, main dalından) — değişiklik sonrası `git push` yeter
 - [ ] Kaplumbağa adı/karakteri çocuğun tercihine göre özelleştirme
 - [ ] Sonraya: koşul ("çiçek varsa"), ileri/sola dön/sağa dön komut tipi (okul Bee-Bot kullanıyorsa)
 

@@ -1,5 +1,20 @@
 # Tablette Açma (Samsung Galaxy Tab S6)
 
+## 0. İnternet adresi (en kolay, bilgisayar gerekmez)
+
+Oyun GitHub Pages'te yayında:
+
+**https://sezgicelik.github.io/tospik-kodlama/**
+
+1. Tabletteki Chrome'a adresi yaz.
+2. Chrome menüsü (⋮) → **Ana ekrana ekle** (veya "Uygulamayı yükle"). Tospik ikonu ana ekrana gelir, tam ekran açılır, internet yokken de çalışır.
+
+Güncelleme: bilgisayarda değişiklik yapılıp `git push` edilince 1-2 dakika içinde yayına girer; tablette uygulama bir sonraki açılışta yeni sürümü alır.
+
+Aşağıdaki yollar yalnızca yayınlanmamış değişiklikleri denemek için gerekir.
+
+---
+
 Üç yol var. Hızlıdan kalıcıya doğru:
 
 ## 1. Aynı Wi-Fi (en hızlı, kurulum yok)
