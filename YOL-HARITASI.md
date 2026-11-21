@@ -36,7 +36,7 @@ Klavye (bilgisayarda test): oklar, R = tekrar bloğu, 2–5 = sayı, Enter = Ba�
 
 ## Nasıl çalıştırılır
 
-`basla.bat` çift tıkla (Python ile yerel sunucu, http://localhost:8765 açılır; pencerede tablet adresi de yazar).
+`basla.bat` çift tıkla (Python ile yerel sunucu, http://localhost:3700 açılır; pencerede tablet adresi de yazar).
 Tablet kurulumu: `TABLET.md`.
 
 ## Dosyalar

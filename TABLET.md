@@ -19,12 +19,12 @@ Aşağıdaki yollar yalnızca yayınlanmamış değişiklikleri denemek için ge
 
 ## 1. Aynı Wi-Fi (en hızlı, kurulum yok)
 
-1. Bilgisayarda `basla.bat` çift tıkla. Pencerede tablet için adres yazar, örn. `http://192.168.1.9:8765`.
+1. Bilgisayarda `basla.bat` çift tıkla. Pencerede tablet için adres yazar, örn. `http://192.168.1.9:3700`.
 2. Tabletteki Chrome'a bu adresi yaz.
-3. Windows ilk seferde "Python'a ağ izni verilsin mi?" diye sorarsa **Özel ağlar** kutusunu işaretleyip izin ver. Sormazsa ve tablet bağlanamazsa, Windows Güvenlik Duvarı'nda 8765 portuna gelen bağlantıya izin ver:
+3. Windows ilk seferde "Python'a ağ izni verilsin mi?" diye sorarsa **Özel ağlar** kutusunu işaretleyip izin ver. Sormazsa ve tablet bağlanamazsa, Windows Güvenlik Duvarı'nda 3700 portuna gelen bağlantıya izin ver:
 
    ```
-   netsh advfirewall firewall add rule name="Tospik 8765" dir=in action=allow protocol=TCP localport=8765
+   netsh advfirewall firewall add rule name="Tospik 3700" dir=in action=allow protocol=TCP localport=3700
    ```
    (Yönetici olarak açılmış komut satırında.)
 
@@ -42,8 +42,8 @@ Tablet, bilgisayardaki sunucuyu `localhost` olarak görür; Chrome bunu güvenli
 1. `basla.bat` çalışır durumda olsun.
 2. Tableti kabloyla bağla. Tablette "USB hata ayıklamaya izin verilsin mi?" çıkar → **Bu bilgisayara her zaman izin ver** + Tamam.
 3. Bilgisayardaki Chrome'da `chrome://inspect/#devices` aç.
-4. **Port forwarding** düğmesi → satıra `8765` ve `localhost:8765` yaz → **Enable port forwarding** işaretle → Done.
-5. Tabletteki Chrome'a `http://localhost:8765` yaz.
+4. **Port forwarding** düğmesi → satıra `3700` ve `localhost:3700` yaz → **Enable port forwarding** işaretle → Done.
+5. Tabletteki Chrome'a `http://localhost:3700` yaz.
 6. Chrome menüsü (⋮) → **Ana ekrana ekle** (veya "Uygulamayı yükle"). Tospik ikonu ana ekrana gelir, tam ekran açılır.
 
 Kurulumdan sonra kablo takılıyken açınca güncel sürüm yüklenir; kablo yokken de service worker sayesinde son önbelleğe alınan sürüm çevrimdışı açılır.
@@ -55,6 +55,6 @@ GitHub Pages gibi ücretsiz bir https adrese yüklenirse tablet doğrudan `https
 ## Sorun giderme
 
 - **Adres açılmıyor:** `basla.bat` penceresi açık mı? Tablet ve bilgisayar aynı Wi-Fi'de mi? Güvenlik duvarı (yukarıda).
-- **"Port 8765 kullanımda" hatası:** Başka bir Tospik sunucusu zaten açık (ör. Claude'un önizleme sunucusu). Onu kapat ya da tabletten o açık olanı kullan.
+- **"Port 3700 kullanımda" hatası:** Başka bir Tospik sunucusu zaten açık (ör. Claude'un önizleme sunucusu). Onu kapat ya da tabletten o açık olanı kullan.
 - **Ses çıkmıyor:** Tablette ilk dokunuştan sonra ses açılır (tarayıcı kuralı). Sağ üstteki hoparlör kapalı olmasın.
 - **Sesli okuma yok:** Samsung tablette Ayarlar → Genel yönetim → Metin okuma → Türkçe ses paketi yüklü olmalı (Google Metin Okuma, Türkçe).
